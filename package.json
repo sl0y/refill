@@ -1,10 +1,10 @@
 {
   "name": "@sloy/refill",
-  "version": "0.0.0+1",
+  "version": "0.0.0+3",
   "description": "",
   "type": "module",
   "main": "./src/index.js",
-  "repository": "",
+  "repository": "https://github.com/sl0y/refill",
   "author": {
     "name": "azder",
     "email": "azhder@gmail.com"
@@ -48,5 +48,12 @@
     "nodemon": "^2.0.15",
     "npm-check-updates": "^12.0.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@me5on/classicist": "^0.0.2",
+    "@me5on/fn": "^0.1.0",
+    "@me5on/is": "^0.0.8",
+    "hoist-non-react-statics": "^3.3.2",
+    "react": "^17.0.2",
+    "react-test-renderer": "^17.0.2"
+  }
 }

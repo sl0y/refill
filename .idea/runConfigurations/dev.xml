@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="dev" type="CompoundRunConfigurationType">
+    <toRun name="esl:wfix" type="js.build_tools.npm" />
+    <toRun name="jst:wcvr" type="js.build_tools.npm" />
+    <toRun name="srv:covr" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>
