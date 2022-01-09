@@ -1,17 +1,21 @@
 import classicist from '@me5on/classicist';
 import IS from '@me5on/is';
-import hoistNonReactStatic from 'hoist-non-react-statics';
+import hoist$ from 'hoist-non-react-statics';
 import React from 'react';
 import dn from '../util/dn.util.js';
 import str from '../util/str.util.js';
 
 
+const {fun} = IS;
+
+
 const css = (
 
-    ({root, names}) => Component => {
+    ({root, names, strat = 'doubles'}) => Component => {
 
         const $dn = dn(Component);
-        const $cn = classicist({names, root: str(root) || $dn});
+        root = str(root) || $dn;
+        const $cn = classicist({names, root, strat});
 
         const Css = (
             // eslint-disable-next-line spaced-comment
@@ -24,8 +28,8 @@ const css = (
             )
         );
 
-        if (IS.fun(Component)) {
-            hoistNonReactStatic(Css, Component);
+        if (fun(Component)) {
+            hoist$(Css, Component);
         }
 
         Css.displayName = `Css(${$dn})`;

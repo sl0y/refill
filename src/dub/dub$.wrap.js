@@ -1,5 +1,5 @@
 import IS from '@me5on/is';
-import hoistNonReactStatic from 'hoist-non-react-statics';
+import hoist$ from 'hoist-non-react-statics';
 import React from 'react';
 import dn from '../util/dn.util.js';
 
@@ -22,7 +22,7 @@ const dub$ = (
         );
 
         if (IS.fun(Component)) {
-            hoistNonReactStatic(Dub$, Component);
+            hoist$(Dub$, Component);
             Component.displayName = $dn;
         }
 

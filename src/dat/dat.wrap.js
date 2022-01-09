@@ -1,6 +1,6 @@
 import FN from '@me5on/fn';
 import IS from '@me5on/is';
-import hoistNonReactStatic from 'hoist-non-react-statics';
+import hoist$ from 'hoist-non-react-statics';
 import React from 'react';
 import dn from '../util/dn.util.js';
 import str from '../util/str.util.js';
@@ -24,7 +24,7 @@ const dat = (
         );
 
         if (IS.fun(Component)) {
-            hoistNonReactStatic(Dat, Component);
+            hoist$(Dat, Component);
         }
 
         Dat.displayName = (
