@@ -8,8 +8,8 @@ const {compose} = FN;
 
 const vis$ = (
 
-    ({displayName, names}, ...dats) => compose(
-        css({root: displayName, names}),
+    ({displayName, names, strat = 'doubles'}, ...dats) => compose(
+        css({root: displayName, names, strat}),
         ...(dats ?? []),
         dub$({displayName}),
     )
