@@ -1,6 +1,6 @@
 {
   "name": "@sloy/refill",
-  "version": "0.0.4+10",
+  "version": "0.0.5+11",
   "description": "",
   "type": "module",
   "main": "./src/index.js",
@@ -34,22 +34,22 @@
     "start": "npm run jst:wtch"
   },
   "devDependencies": {
-    "@jest/globals": "^27.4.6",
+    "@jest/globals": "^27.5.1",
     "@me5on/dv": "^0.0.3",
     "@sloy/eslint-config-import": "^0.0.1",
     "@sloy/eslint-config-recommended": "^0.1.1",
     "@sloy/jest-setup": "^0.0.1",
-    "eslint": "^8.6.0",
+    "eslint": "^8.9.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "http-server": "^14.0.0",
+    "http-server": "^14.1.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.7",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "npm-check-updates": "^12.1.0"
+    "npm-check-updates": "^12.4.0"
   },
   "dependencies": {
-    "@me5on/classicist": "^0.0.3",
+    "@me5on/classicist": "^0.0.5",
     "@me5on/fn": "^0.1.0",
     "@me5on/is": "^0.0.8",
     "hoist-non-react-statics": "^3.3.2",
