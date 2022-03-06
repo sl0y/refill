@@ -8,27 +8,24 @@ import str from '../util/str.util.js';
 
 const dat = (
 
-    (tag, fn) => Component => {
+    (...$$) => Component => {
 
-        const transform = fn ?? tag ?? FN.ident;
-        if (!IS.fun(transform)) {
-            throw new Error(`${transform} is not a function`);
+        const tag = (2 > $$.length ? $$[0]?.name : $$[0]) ?? ''; // eslint-disable-line no-magic-numbers
+        const xfn = (2 > $$.length ? $$[0] : $$[1]) ?? FN.ident; // eslint-disable-line no-magic-numbers
+
+        if (!IS.fun(xfn)) {
+            throw new Error(`${xfn} is not a function`);
         }
 
-        const Dat = (
-            // eslint-disable-next-line spaced-comment
-            $ => /*#__PURE__*/React.createElement(
-                Component,
-                transform($),
-            )
-        );
+        // eslint-disable-next-line spaced-comment
+        const Dat = ($ => /*#__PURE__*/React.createElement(Component, xfn($)));
 
         if (IS.fun(Component)) {
             hoist$(Dat, Component);
         }
 
         Dat.displayName = (
-            fn
+            tag
                 ? `Dat-${str(tag)}(${dn(Component)})`
                 : `Dat(${dn(Component)})`
         );

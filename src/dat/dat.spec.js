@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {describe, expect, it, jest} from '@jest/globals';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
@@ -67,6 +68,39 @@ describe('refill.dat', () => {
 
     });
 
+    it('uses the function name for tag if not provided', () => {
+
+        const like = expect.objectContaining;
+        const anyFun = expect.any(Function);
+
+        const prop = 'prop';
+        const tag = 'fn';
+        const prefix = `Dat-${tag}(`;
+        const fn = ({a}) => ({b: a});
+
+        const component = jest.fn(() => null);
+        const implementation = dat(fn);
+        const wrapper = jest.fn(implementation);
+
+        // noinspection JSCheckFunctionSignatures
+        const hoc = wrapper(component);
+
+        expect(hoc.displayName.substring(0, prefix.length)).toEqual(prefix);
+
+        // noinspection JSCheckFunctionSignatures
+        TestRenderer.create(React.createElement(hoc, {a: prop}));
+
+        expect(hoc).toEqual(anyFun);
+        expect(wrapper).toHaveBeenCalledTimes(1);
+        expect(component).toHaveBeenCalledTimes(1);
+
+        expect(component).toHaveBeenCalledWith(
+            like({b: prop}),
+            {},
+        );
+
+    });
+
     it('passes the transformed props to the wrapped component', () => {
 
         const like = expect.objectContaining;
@@ -76,20 +110,20 @@ describe('refill.dat', () => {
         const tag = 'name';
         const fn = ({a}) => ({b: a});
 
-        const originalComponent = jest.fn(() => null);
+        const Component = jest.fn(() => null);
         const wrapper = jest.fn(dat(tag, fn));
 
         // noinspection JSCheckFunctionSignatures
-        const wrappedComponent = wrapper(originalComponent);
+        const Hoc = wrapper(Component);
 
         // noinspection JSCheckFunctionSignatures
-        TestRenderer.create(React.createElement(wrappedComponent, {a: prop}));
+        TestRenderer.create(React.createElement(Hoc, {a: prop}));
 
-        expect(wrappedComponent).toEqual(anyFun);
+        expect(Hoc).toEqual(anyFun);
         expect(wrapper).toHaveBeenCalledTimes(1);
-        expect(originalComponent).toHaveBeenCalledTimes(1);
+        expect(Component).toHaveBeenCalledTimes(1);
 
-        expect(originalComponent).toHaveBeenCalledWith(
+        expect(Component).toHaveBeenCalledWith(
             like({b: prop}),
             {},
         );

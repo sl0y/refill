@@ -16,7 +16,7 @@ const sortedKeys = (
 
 describe('refill', () => {
 
-    const funs = ['css', 'dat', 'dub$', 'vis$'].sort();
+    const funs = ['css', 'dat', 'dub$', 'pt', 'vis$'].sort();
 
     it(
         'refill is a function',
